@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+docker run -itd -p 27015:27015/udp -p 27015:27015 --name csgoserver csgoserver bash -c "./csgoserver start && ./csgoserver console"
