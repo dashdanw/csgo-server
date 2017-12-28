@@ -16,9 +16,9 @@ RUN ./csgoserver auto-install
 
 USER root
 
-ADD ./config/csgoserver.cfg ./serverfiles/csgo/cfg/csgoserver.cfg
+ADD ./config/* ./serverfiles/csgo/cfg/
 
-RUN chown $USER:$USER /home/$USER/serverfiles/csgo/cfg/csgoserver.cfg
+RUN chown -R $USER:$USER /home/$USER/serverfiles/csgo/cfg/
 
 USER $USER
 
