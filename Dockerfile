@@ -2,7 +2,9 @@ FROM centos:7
 
 ENV USER csgoserver
 
-RUN yum install -y sudo iproute file mailx postfix curl wget bzip2 gzip unzip python binutils bc tmux glibc.i686 libstdc++ libstdc++.i686
+RUN yum install -y epel-release
+
+RUN yum install -y sudo iproute file mailx postfix curl wget bzip2 gzip unzip python binutils bc jq tmux glibc.i686 libstdc++ libstdc++.i686 ncurses-libs.i686
 
 RUN useradd -m $USER && usermod -aG wheel $USER
 
@@ -10,7 +12,7 @@ USER $USER
 
 WORKDIR /home/$USER
 
-RUN wget -N --no-check-certificate https://gameservermanagers.com/dl/linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh csgoserver
+RUN wget -O linuxgsm.sh https://linuxgsm.sh && chmod +x linuxgsm.sh && bash linuxgsm.sh csgoserver
 
 RUN ./csgoserver auto-install
 
